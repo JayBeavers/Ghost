@@ -9,22 +9,19 @@ config = {
     // ### Development **(default)**
     development: {
         // The url to use when providing links to the site, E.g. in RSS and email.
-        url: 'http://my-ghost-blog.com',
+        url: process.env.URL || 'http://my-ghost-blog.com',
 
-        // Example mail config
-        // Visit http://support.ghost.org/mail for instructions
-        // ```
-        //  mail: {
-        //      transport: 'SMTP',
-        //      options: {
-        //          service: 'Mailgun',
-        //          auth: {
-        //              user: '', // mailgun username
-        //              pass: ''  // mailgun password
-        //          }
-        //      }
-        //  },
-        // ```
+        mail: process.env.MAIL_SERVICE
+          ? {
+            transport: 'SMTP',
+            options: {
+              service: process.env.MAIL_SERVICE,
+              auth: {
+                user: process.env.MAIL_USER,
+                pass: process.env.MAIL_PASS
+              }
+            }
+          } : undefined,
 
         database: {
             client: 'sqlite3',
@@ -48,8 +45,20 @@ config = {
     // When running Ghost in the wild, use the production environment
     // Configure your URL and mail settings here
     production: {
-        url: 'http://my-ghost-blog.com',
-        mail: {},
+        url: process.env.URL || 'http://my-ghost-blog.com',
+
+        mail: process.env.MAIL_SERVICE
+          ? {
+            transport: 'SMTP',
+            options: {
+              service: process.env.MAIL_SERVICE,
+              auth: {
+                user: process.env.MAIL_USER,
+                pass: process.env.MAIL_PASS
+              }
+            }
+          } : undefined,
+
         database: {
             client: 'sqlite3',
             connection: {
