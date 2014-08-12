@@ -42,9 +42,9 @@ Session.vim
 .tmp
 
 
-/core/client/assets/css
-!/core/client/assets/css/ember-hacks.css
-/core/client/assets/fonts
+#/core/client/assets/css
+#!/core/client/assets/css/ember-hacks.css
+#/core/client/assets/fonts
 /core/server/data/export/exported*
 /docs
 /_site
@@ -62,11 +62,11 @@ CHANGELOG.md
 # Casper generated files
 /core/test/functional/*.png
 
-config.js
-/core/client/config.js
+#config.js
+#/core/client/config.js
 
 # Built asset files
-/core/built
+#/core/built
 
 # Coverage reports
 coverage.html
